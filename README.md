@@ -52,4 +52,3 @@ Certifique-se de que os middlewares estejam configurados corretamente no arquivo
 
 ---
 
-Lembre-se de personalizar o README com informações adicionais relevantes para o seu projeto.
