@@ -1,14 +1,25 @@
 import Aluno from '../models/Aluno';
+import Foto from '../models/Foto';
 
+// Controle dos métodos do aluno, feito com classe
 class AlunoController {
+  // método que lista todos os alunos
   async index(req, res) {
-    const alunos = await Aluno.findAll();
+    const alunos = await Aluno.findAll({ // encontra todos os alunos
+      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade'],
+      order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+      include: {
+        model: Foto,
+        attributes: ['url', 'filename'],
+      },
+    });
     res.json(alunos);
   }
 
+  // método de criação dos alunos
   async store(req, res) {
     try {
-      const aluno = await Aluno.create(req.body);
+      const aluno = await Aluno.create(req.body);// recebe o json passado no body
       return res.json(aluno);
     } catch (e) {
       return res.status(400).json({
@@ -17,9 +28,9 @@ class AlunoController {
     }
   }
 
-  async show(req, res) {
+  async show(req, res) { // lista um aluno em especifico passando o id
     try {
-      const { id } = req.params;
+      const { id } = req.params; // recebe o id da url
 
       if (!id) {
         return res.status(400).json({
@@ -27,7 +38,14 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await Aluno.findByPk(id, { // encontra o aluno através do id
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade'],
+        order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        },
+      });
 
       if (!aluno) {
         return res.status(400).json({
@@ -43,7 +61,7 @@ class AlunoController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req, res) { // deleta o aluno
     try {
       const { id } = req.params;
 
@@ -72,7 +90,7 @@ class AlunoController {
     }
   }
 
-  async update(req, res) {
+  async update(req, res) { // atualiza um aluno
     try {
       const { id } = req.params;
 
