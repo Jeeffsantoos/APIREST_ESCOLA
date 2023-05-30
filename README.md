@@ -10,7 +10,9 @@ Antes de executar a aplicação, é necessário configurar algumas variáveis de
 2. Adicione as seguintes variáveis ao arquivo `.env`:
 
 DB_HOST=<endereço_do_banco_de_dados>
+
 DB_USER=<usuário_do_banco_de_dados>
+
 DB_PASSWORD=<senha_do_banco_de_dados>
 
 Certifique-se de substituir `<endereço_do_banco_de_dados>`, `<usuário_do_banco_de_dados>` e `<senha_do_banco_de_dados>` pelas informações corretas do seu banco de dados.
