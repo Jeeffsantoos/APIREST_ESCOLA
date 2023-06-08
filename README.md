@@ -1,34 +1,54 @@
-# README
+# Aplicação Express
 
-Este é um arquivo README para o repositório do GitHub contendo o código fornecido.
+Esta é uma aplicação Express que possui rotas para manipulação de usuários, tokens, alunos e fotos.
 
-## Descrição
+## Configuração
 
-Este código representa uma aplicação simples em Express.js que configura um servidor e define rotas para uma página inicial e operações relacionadas a usuários. O código também utiliza o pacote `dotenv` para carregar variáveis de ambiente a partir de um arquivo `.env`.
+Antes de executar a aplicação, é necessário configurar algumas variáveis de ambiente. Siga as etapas abaixo:
+
+1. Crie um arquivo `.env` na raiz do projeto.
+2. Adicione as seguintes variáveis ao arquivo `.env`:
+
+DB_HOST=<endereço_do_banco_de_dados>
+
+DB_USER=<usuário_do_banco_de_dados>
+
+DB_PASSWORD=<senha_do_banco_de_dados>
+
+Certifique-se de substituir `<endereço_do_banco_de_dados>`, `<usuário_do_banco_de_dados>` e `<senha_do_banco_de_dados>` pelas informações corretas do seu banco de dados.
 
 ## Instalação
 
-Para executar esta aplicação localmente, siga as etapas abaixo:
+Siga estas etapas para instalar e executar a aplicação:
 
-1. Certifique-se de ter o Node.js instalado em sua máquina.
-2. Clone este repositório em seu ambiente local.
-3. Navegue até o diretório do projeto no seu terminal.
-4. Execute o comando `npm install` para instalar as dependências do projeto.
-5. Crie um arquivo `.env` na raiz do projeto e defina as variáveis de ambiente necessárias (consulte o arquivo `.env.example` para obter mais informações).
-6. Execute o comando `npm start` para iniciar o servidor.
-7. O servidor estará rodando em `http://localhost:3000/`.
+1. Clone este repositório: `git clone <URL_do_repositório>`
+2. Navegue até o diretório do projeto: `cd <diretório_do_projeto>`
+3. Instale as dependências: `npm install`
+4. Inicie a aplicação: `npm start`
 
-## Uso
+A aplicação será iniciada na porta padrão 3000. Você pode acessá-la em `http://localhost:3000`.
 
-Após a instalação e execução do servidor, você pode acessar as seguintes rotas:
+## Rotas
 
-- Página inicial: `http://localhost:3000/`
-- Rotas de usuário: `http://localhost:3000/users`
+A aplicação possui as seguintes rotas:
 
-## Contribuição
+- `/` - Rota inicial.
+- `/users` - Rotas relacionadas aos usuários.
+- `/tokens` - Rotas relacionadas aos tokens.
+- `/alunos` - Rotas relacionadas aos alunos.
+- `/fotos` - Rotas relacionadas às fotos.
 
-Contribuições são bem-vindas! Se você encontrar algum problema no código ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma nova Issue ou enviar um Pull Request.
+Certifique-se de que as rotas estejam configuradas corretamente no arquivo `App.js` de acordo com as suas necessidades.
 
-## Licença
+## Middlewares
 
-Este projeto está licenciado sob a Licença [MIT](LICENSE).
+A aplicação utiliza os seguintes middlewares:
+
+- `express.urlencoded({ extended: true })` - Middleware para analisar corpos de requisições codificados em URL.
+- `express.json()` - Middleware para analisar corpos de requisições codificados em JSON.
+- `express.static()` - Middleware para servir arquivos estáticos localizados na pasta "uploads".
+
+Certifique-se de que os middlewares estejam configurados corretamente no arquivo `App.js` de acordo com as suas necessidades.
+
+---
+
